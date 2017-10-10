@@ -1,0 +1,11 @@
+{
+    "require": {
+        "php": ">=7.0",
+        "silex/silex": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "IWD\\JOBINTERVIEW\\": "src/"
+        }
+    }
+}
