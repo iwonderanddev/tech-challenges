@@ -35,6 +35,7 @@ class ApiRoutesLoader
     public function bindRoutesToControllers()
     {
         $this->app->get('/api/surveys/all', "api.controller:getSurveys");
+        $this->app->get('/api/raw', "api.controller:getRawData");
         $this->app->get('/api/surveys/{id}', "api.controller:getSurvey");
     }
 }

@@ -12,11 +12,13 @@ class ApiController
         $this->api = new JsonApi();
     }
     public function getSurveys(){
-        return $this->api->getSurveys();
     }
 
     public function getSurvey($id){
-        return 'getting '.$id;
+        return $this->api->getSurveyById($id);
+    }
+    public function getRawData(){
+        return $this->api->getRawData();
     }
 
 }
