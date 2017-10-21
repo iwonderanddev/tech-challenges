@@ -38,9 +38,7 @@ $app->get('/', function () use ($app) {
     return 'Status OK';
 });
 
-$app->get('/api/surveys/all', "api.controller:getSurveys");
-
-//$routesLoader = new IWD\JOBINTERVIEW\Api\ApiRoutesLoader($app);
-//$routesLoader->bindRoutesToControllers();
+$routesLoader = new IWD\JOBINTERVIEW\Api\ApiRoutesLoader($app);
+$routesLoader->bindRoutesToControllers();
 
 $app->run();

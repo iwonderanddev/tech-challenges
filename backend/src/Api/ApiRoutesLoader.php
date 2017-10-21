@@ -5,8 +5,12 @@ namespace IWD\JOBINTERVIEW\Api;
 use Silex\Application;
 use IWD\JOBINTERVIEW\Controller\ApiController;
 
-
-// unused atm
+/**
+ * Class ApiRoutesLoader
+ * @package IWD\JOBINTERVIEW\Api
+ *
+ * register api routes to our app and bind them to ApiController actions
+ */
 class ApiRoutesLoader
 {
     private $app;
@@ -15,16 +19,22 @@ class ApiRoutesLoader
         $this->app = $app;
         $this->instantiateControllers();
     }
+
+    /**
+     * register apiController to our app
+     */
     private function instantiateControllers()
     {
         $this->app['api.controller'] = function() {
-            return new ApiController($this->app['api.jsonapi']);
+            return new ApiController();
         };
     }
+    /**
+     * bin routes to our controller actions
+     */
     public function bindRoutesToControllers()
     {
-        $api = $this->app["controllers_factory"];
-        $api->get('/api/surveys/all', "controller.apicontroller:getSurveys");
-        $api->get('/api/surveys/{id}', "controller.apicontroller:getSurvey");
+        $this->app->get('/api/surveys/all', "api.controller:getSurveys");
+        $this->app->get('/api/surveys/{id}', "api.controller:getSurvey");
     }
 }
