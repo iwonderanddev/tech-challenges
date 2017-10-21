@@ -40,20 +40,22 @@ class JsonApi
     public function getSurveyById($id){
         $data = $this->jsonFetcher->getAllJsonData();
         $surveyData = [];
+
+        $surveyData['dates'] = $this->getSurveyDates($id);
+
+        return new JsonResponse($surveyData);
+    }
+
+    public function getSurveyDates($id){
+        $data = $this->jsonFetcher->getAllJsonData();
+        $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
-                $itemArr = json_decode($item,true);
-                if($itemArr['survey']['code'] === $id){
-                    $surveyData[] = $itemArr;
-
-                    $test = new SurveyManager($item);
-                    var_dump($test->getVisitDate());
-                }
+                $survey = new SurveyManager($item);
+                $surveyData[] = $survey->getVisitDate();
             }
         }
-
-
-        return new JsonResponse($result);
+        return $surveyData;
     }
 
     /**

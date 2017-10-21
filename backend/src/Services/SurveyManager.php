@@ -34,7 +34,7 @@ class SurveyManager
      * @return array
      */
     public function getQuestionsData(){
-        return $this->surveyData['survey']['questions'];
+        return $this->surveyData['questions'];
     }
 
     /**
@@ -42,7 +42,7 @@ class SurveyManager
      * @return string
      */
     public function getProductsCount(){
-        return $this->getDataByQuestionType(QUESTION_NUMERIC_TYPE);
+        return $this->getDataByQuestionType(self::QUESTION_NUMERIC_TYPE);
     }
 
     /**
@@ -50,7 +50,7 @@ class SurveyManager
      * @return string
      */
     public function getQCMData(){
-        return $this->getDataByQuestionType(QUESTION_QCM_TYPE);
+        return $this->getDataByQuestionType(self::QUESTION_QCM_TYPE);
     }
 
     /**
@@ -58,7 +58,7 @@ class SurveyManager
      * @return string
      */
     public function getVisitDate(){
-        return $this->getDataByQuestionType(QUESTION_DATE_TYPE);
+        return $this->getDataByQuestionType(self::QUESTION_DATE_TYPE);
     }
 
     /**
@@ -68,7 +68,6 @@ class SurveyManager
     public function getDataByQuestionType($type){
         $data = $this->getQuestionsData();
         foreach ($data as $item){
-            var_dump($item);
             if($item['type'] === $type){
                 return $item["answer"];
             }
