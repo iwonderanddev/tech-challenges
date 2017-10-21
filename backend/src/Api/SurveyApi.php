@@ -8,7 +8,7 @@ use IWD\JOBINTERVIEW\Services\SurveyManager;
 class SurveyApi
 {
     public function __construct(){
-        $this->jsonFetcher = new JsonFetcher();
+        $this->jsonFetcher = $this->getJsonFetcher();
     }
 
     /**
@@ -60,7 +60,7 @@ class SurveyApi
         }
         foreach ($surveyData as $k=>$answer) {
             foreach ($answer as $id=>$value) {
-                $result[$id]+=$value;
+                array_key_exists( $id, $result ) ? $result[$id] += $value : $result[$id] = $value;
             }
         }
 
@@ -127,13 +127,7 @@ class SurveyApi
 
     }
 
-    /**
-     * @return string
-     * used for debug
-     */
-    public function getRawData(){
-        $data = $this->jsonFetcher->getAllJsonData();
-
-        return join($data,'<br>');
+    protected function getJsonFetcher(){
+        return new JsonFetcher();
     }
 }
