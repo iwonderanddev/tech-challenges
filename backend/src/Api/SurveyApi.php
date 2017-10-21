@@ -35,10 +35,12 @@ class SurveyApi
      * return the data of a survey
      * @return Array
      */
-    public function getSurveyById($id){
-        $data = $this->getSurveysById($id);
-        $surveyData = [];
+    public function getSurveyResult($id){
 
+        $data = $this->getSurveysById($id);
+        $surveyInfos = json_decode($data[0],true);
+        $surveyData = [];
+        $surveyData["survey"] = $surveyInfos["survey"];
         $surveyData["qcm"] = $this->getBestSellers($data);
         $surveyData["date"] = $this->getSurveyDates($data);
         $surveyData["numeric"] = $this->getAveragePoductsCount($data);
@@ -53,28 +55,27 @@ class SurveyApi
         foreach ($data as $item){
             if(strlen($item) > 0){
                 $survey = new SurveyManager($item);
-                $surveyData[] = $survey->getQCMData();
+                $surveyData[] = $survey->getQCMDataAnswer();
             }
         }
-
         foreach ($surveyData as $k=>$answer) {
             foreach ($answer as $id=>$value) {
                 $result[$id]+=$value;
             }
         }
 
-        return $result;
+        return ['question'=>$survey->getQCMDataQuestion(), 'answer'=>$result];
     }
 
     protected function getSurveyDates($data){
-        $surveyData = [];
+        $dates = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
                 $survey = new SurveyManager($item);
-                $surveyData[] = $survey->getVisitDate();
+                $dates[] = $survey->getVisitDateAnswer();
             }
         }
-        return $surveyData;
+        return ['question'=>$survey->getVisitDateQuestion(), 'answer'=>$dates];
     }
 
     protected function getAveragePoductsCount($data){
@@ -82,12 +83,14 @@ class SurveyApi
         foreach ($data as $item){
             if(strlen($item) > 0){
                 $survey = new SurveyManager($item);
-                $surveyData[] = $survey->getProductsCount();
+                $surveyData[] = $survey->getProductsCountAnswer();
             }
         }
-
-        // return average
-        return round(array_sum($surveyData) / count($surveyData));
+        $roundedCount = round(array_sum($surveyData) / count($surveyData));
+        return [
+            'question'=>$survey->getProductsCountQuestion(),
+            'answer'=> $roundedCount
+        ];
     }
 
     protected function getAvailableProducts($data){

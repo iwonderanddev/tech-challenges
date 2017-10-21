@@ -38,31 +38,66 @@ class SurveyManager
     }
 
     /**
-     * get the visit date value
+     * get the product count question
      * @return string
      */
-    public function getProductsCount(){
-        return $this->getDataByQuestionType(self::QUESTION_NUMERIC_TYPE);
+    public function getProductsCountQuestion(){
+        $data = $this->getDataByQuestionType(self::QUESTION_NUMERIC_TYPE);
+
+        return $data['label'];
+    }
+
+    /**
+     * get the product count
+     * @return string
+     */
+    public function getProductsCountAnswer(){
+        $data = $this->getDataByQuestionType(self::QUESTION_NUMERIC_TYPE);
+
+        return $data['answer'];
+    }
+
+    /**
+     * get the qcm answer
+     * @return string
+     */
+    public function getQCMDataAnswer(){
+        $result = [];
+        $data = $this->getDataByQuestionType(self::QUESTION_QCM_TYPE);
+        $answer = $data['answer'];
+        $options = $data['options'];
+
+        // combine arrays
+        return array_combine($options, $answer);;
+    }
+    /**
+     * get the qcm question
+     * @return string
+     */
+    public function getQCMDataQuestion(){
+        $data = $this->getDataByQuestionType(self::QUESTION_QCM_TYPE);
+
+        return $data['label'];
+    }
+
+    /**
+     * get the visit question
+     * @return string
+     */
+    public function getVisitDateQuestion(){
+        $data = $this->getDataByQuestionType(self::QUESTION_DATE_TYPE);
+
+        return $data['label'];
     }
 
     /**
      * get the visit date value
      * @return string
      */
-    public function getQCMData(){
-        $answer = $this->getDataByQuestionType(self::QUESTION_QCM_TYPE);
-        $options = $this->getQCMOptions();
+    public function getVisitDateAnswer(){
+        $data = $this->getDataByQuestionType(self::QUESTION_DATE_TYPE);
 
-        return array_combine($options, $answer);
-
-    }
-
-    /**
-     * get the visit date value
-     * @return string
-     */
-    public function getVisitDate(){
-        return $this->getDataByQuestionType(self::QUESTION_DATE_TYPE);
+        return $data['answer'];
     }
 
     /**
@@ -73,19 +108,7 @@ class SurveyManager
         $data = $this->getQuestionsData();
         foreach ($data as $item){
             if($item['type'] === $type){
-                return $item["answer"];
-            }
-        }
-    }
-    /**
-     * get answer of a question by given type
-     * @return mixed
-     */
-    protected function getQCMOptions(){
-        $data = $this->getQuestionsData();
-        foreach ($data as $item){
-            if($item['type'] === self::QUESTION_QCM_TYPE){
-                return $item["options"];
+                return $item;
             }
         }
     }

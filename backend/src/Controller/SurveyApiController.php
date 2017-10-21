@@ -20,7 +20,7 @@ class SurveyApiController
     }
 
     public function getSurvey($id){
-        $result = $this->api->getSurveyById($id);
+        $result = $this->api->getSurveyResult($id);
 
         return new JsonResponse($result);
     }
