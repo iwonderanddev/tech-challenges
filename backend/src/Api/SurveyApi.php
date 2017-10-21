@@ -2,8 +2,6 @@
 
 namespace IWD\JOBINTERVIEW\Api;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-
 use IWD\JOBINTERVIEW\Services\JsonFetcher;
 use IWD\JOBINTERVIEW\Services\SurveyManager;
 
@@ -15,7 +13,7 @@ class SurveyApi
 
     /**
      * return available surveys
-     * @return JsonResponse
+     * @return Array
      *
      */
     public function getSurveys(){
@@ -23,38 +21,31 @@ class SurveyApi
         $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
-                $surveyData[] = json_decode($item,true)['survey'];
+                $surveyData[] = json_decode($item,true)["survey"];
             }
         }
 
         // get unique values and strip index from array
         $result = array_values(array_map("unserialize", array_unique(array_map("serialize", $surveyData))));
 
-        return new JsonResponse($result);
+        return $result;
     }
 
     /**
      * return the data of a survey
-     * @return JsonResponse
+     * @return Array
      */
     public function getSurveyById($id){
-        $data = $this->jsonFetcher->getAllJsonData();
+        $data = $this->getSurveysById($id);
         $surveyData = [];
 
-//        $surveyData['dates'] =
-//            [
-//                'question' => $data[0]['questions'],
-//                'answer' =>$this->getSurveyDates($id)
-//            ]
-        $surveyData['date'] = $this->getSurveyDates($id);
-        $surveyData['productsCount'] = $this->getAveragePoductsCount($id);
-        $surveyData['products'] = $this->getAvailableProducts($id);
+        $surveyData["date"] = $this->getSurveyDates($data);
+        $surveyData["productsCount"] = $this->getAveragePoductsCount($data);
 
-        return new JsonResponse($surveyData);
+        return $surveyData;
     }
 
-    protected function getSurveyDates($id){
-        $data = $this->getSurveysById($id);
+    protected function getSurveyDates($data){
         $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
@@ -65,8 +56,7 @@ class SurveyApi
         return $surveyData;
     }
 
-    protected function getAveragePoductsCount($id){
-        $data = $this->getSurveysById($id);
+    protected function getAveragePoductsCount($data){
         $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
@@ -79,8 +69,7 @@ class SurveyApi
         return round(array_sum($surveyData) / count($surveyData));
     }
 
-    protected function getAvailableProducts($id){
-        $data = $this->getSurveysById($id);
+    protected function getAvailableProducts($data){
         $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
