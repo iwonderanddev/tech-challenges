@@ -50,7 +50,11 @@ class SurveyManager
      * @return string
      */
     public function getQCMData(){
-        return $this->getDataByQuestionType(self::QUESTION_QCM_TYPE);
+        $answer = $this->getDataByQuestionType(self::QUESTION_QCM_TYPE);
+        $options = $this->getQCMOptions();
+
+        return array_combine($options, $answer);
+
     }
 
     /**
@@ -70,6 +74,18 @@ class SurveyManager
         foreach ($data as $item){
             if($item['type'] === $type){
                 return $item["answer"];
+            }
+        }
+    }
+    /**
+     * get answer of a question by given type
+     * @return mixed
+     */
+    protected function getQCMOptions(){
+        $data = $this->getQuestionsData();
+        foreach ($data as $item){
+            if($item['type'] === self::QUESTION_QCM_TYPE){
+                return $item["options"];
             }
         }
     }

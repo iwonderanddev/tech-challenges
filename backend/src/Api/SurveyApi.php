@@ -39,10 +39,31 @@ class SurveyApi
         $data = $this->getSurveysById($id);
         $surveyData = [];
 
+        $surveyData["qcm"] = $this->getBestSellers($data);
         $surveyData["date"] = $this->getSurveyDates($data);
-        $surveyData["productsCount"] = $this->getAveragePoductsCount($data);
+        $surveyData["numeric"] = $this->getAveragePoductsCount($data);
 
         return $surveyData;
+    }
+
+    protected function getBestSellers($data){
+        $surveyData = [];
+        $result = [];
+
+        foreach ($data as $item){
+            if(strlen($item) > 0){
+                $survey = new SurveyManager($item);
+                $surveyData[] = $survey->getQCMData();
+            }
+        }
+
+        foreach ($surveyData as $k=>$answer) {
+            foreach ($answer as $id=>$value) {
+                $result[$id]+=$value;
+            }
+        }
+
+        return $result;
     }
 
     protected function getSurveyDates($data){
