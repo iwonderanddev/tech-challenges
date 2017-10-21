@@ -41,14 +41,20 @@ class JsonApi
         $data = $this->jsonFetcher->getAllJsonData();
         $surveyData = [];
 
-        $surveyData['dates'] = $this->getSurveyDates($id);
-        $surveyData['products'] = $this->getAveragePoductsCount($id);
+//        $surveyData['dates'] =
+//            [
+//                'question' => $data[0]['questions'],
+//                'answer' =>$this->getSurveyDates($id)
+//            ]
+        $surveyData['date'] = $this->getSurveyDates($id);
+        $surveyData['productsCount'] = $this->getAveragePoductsCount($id);
+        $surveyData['products'] = $this->getAvailableProducts($id);
 
         return new JsonResponse($surveyData);
     }
 
     protected function getSurveyDates($id){
-        $data = $this->jsonFetcher->getAllJsonData();
+        $data = $this->getSurveysById($id);
         $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
@@ -60,7 +66,7 @@ class JsonApi
     }
 
     protected function getAveragePoductsCount($id){
-        $data = $this->jsonFetcher->getAllJsonData();
+        $data = $this->getSurveysById($id);
         $surveyData = [];
         foreach ($data as $item){
             if(strlen($item) > 0){
@@ -71,6 +77,41 @@ class JsonApi
 
         // return average
         return round(array_sum($surveyData) / count($surveyData));
+    }
+
+    protected function getAvailableProducts($id){
+        $data = $this->getSurveysById($id);
+        $surveyData = [];
+        foreach ($data as $item){
+            if(strlen($item) > 0){
+                $survey = new SurveyManager($item);
+                $surveyData[] = $survey->getQCMData();
+            }
+        }
+
+        // return average
+        return round(array_sum($surveyData) / count($surveyData));
+    }
+
+    /**
+     * get json data by survey id
+     * @param $id
+     * @return mixed
+     */
+    protected function getSurveysById($id){
+        $data = $this->jsonFetcher->getAllJsonData();
+        $surveys = [];
+        foreach ($data as $item){
+            if(strlen($item) > 0){
+                $survey = new SurveyManager($item);
+                if($survey->getCode() === $id){
+                    $surveys[] = $item;
+                }
+            }
+        }
+
+        return $surveys;
+
     }
 
     /**
