@@ -14,7 +14,7 @@ class JsonFetcher implements JsonFetcherInterface
         foreach($files as $file) {
             array_push($data,file_get_contents(self::JSON_ROOT_FOLDER.'/'.$file));
         }
-        return join('<br>',$data);
+        return $data;
     }
 
 

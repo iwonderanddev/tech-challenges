@@ -10,6 +10,14 @@ class JsonApi
         $this->jsonFetcher = new JsonFetcher();
     }
     public function getSurveys(){
-        return $this->jsonFetcher->getAllJsonData();
+        $data = $this->jsonFetcher->getAllJsonData();
+        $surveyData = [];
+        foreach ($data as $item){
+            if(strlen($item) > 0){
+                array_push($surveyData,json_encode(json_decode($item)->survey));
+            }
+        }
+        $surveyData = array_unique($surveyData);
+        return join($surveyData,'<br>');
     }
 }
