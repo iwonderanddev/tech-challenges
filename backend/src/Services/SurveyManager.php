@@ -65,7 +65,7 @@ class SurveyManager
      * get answer of a question by given type
      * @return mixed
      */
-    public function getDataByQuestionType($type){
+    protected function getDataByQuestionType($type){
         $data = $this->getQuestionsData();
         foreach ($data as $item){
             if($item['type'] === $type){

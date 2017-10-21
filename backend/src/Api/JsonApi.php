@@ -42,11 +42,12 @@ class JsonApi
         $surveyData = [];
 
         $surveyData['dates'] = $this->getSurveyDates($id);
+        $surveyData['products'] = $this->getAveragePoductsCount($id);
 
         return new JsonResponse($surveyData);
     }
 
-    public function getSurveyDates($id){
+    protected function getSurveyDates($id){
         $data = $this->jsonFetcher->getAllJsonData();
         $surveyData = [];
         foreach ($data as $item){
@@ -56,6 +57,20 @@ class JsonApi
             }
         }
         return $surveyData;
+    }
+
+    protected function getAveragePoductsCount($id){
+        $data = $this->jsonFetcher->getAllJsonData();
+        $surveyData = [];
+        foreach ($data as $item){
+            if(strlen($item) > 0){
+                $survey = new SurveyManager($item);
+                $surveyData[] = $survey->getProductsCount();
+            }
+        }
+
+        // return average
+        return round(array_sum($surveyData) / count($surveyData));
     }
 
     /**
