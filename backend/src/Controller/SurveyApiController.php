@@ -2,14 +2,14 @@
 
 namespace IWD\JOBINTERVIEW\Controller;
 
-use IWD\JOBINTERVIEW\Api\JsonApi;
+use IWD\JOBINTERVIEW\Api\SurveyApi;
 
 
 
-class ApiController
+class SurveyApiController
 {
     public function __construct(){
-        $this->api = new JsonApi();
+        $this->api = new SurveyApi();
     }
     public function getSurveys(){
     }

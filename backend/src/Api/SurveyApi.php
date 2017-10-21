@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use IWD\JOBINTERVIEW\Services\JsonFetcher;
 use IWD\JOBINTERVIEW\Services\SurveyManager;
 
-class JsonApi
+class SurveyApi
 {
     public function __construct(){
         $this->jsonFetcher = new JsonFetcher();

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use IWD\JOBINTERVIEW\Api\ApiRoutesLoader;
-use IWD\JOBINTERVIEW\Controller\ApiController;
+use IWD\JOBINTERVIEW\Controller\SurveyApiController;
 use Silex\Provider\ServiceControllerServiceProvider;
 
 
@@ -26,13 +26,6 @@ $app->after(function (Request $request, Response $response) {
 });
 
 $app->register(new ServiceControllerServiceProvider());
-
-$app['api.controller'] = function() use ($app) {
-    return new ApiController();
-};
-
-$app->get('/posts.json', "posts.controller:indexJsonAction");
-
 
 $app->get('/', function () use ($app) {
     return 'Status OK';

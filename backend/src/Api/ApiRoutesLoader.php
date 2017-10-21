@@ -3,7 +3,7 @@
 namespace IWD\JOBINTERVIEW\Api;
 
 use Silex\Application;
-use IWD\JOBINTERVIEW\Controller\ApiController;
+use IWD\JOBINTERVIEW\Controller\SurveyApiController;
 
 /**
  * Class ApiRoutesLoader
@@ -25,8 +25,8 @@ class ApiRoutesLoader
      */
     private function instantiateControllers()
     {
-        $this->app['api.controller'] = function() {
-            return new ApiController();
+        $this->app['survey.api.controller'] = function() {
+            return new SurveyApiController();
         };
     }
     /**
@@ -34,8 +34,8 @@ class ApiRoutesLoader
      */
     public function bindRoutesToControllers()
     {
-        $this->app->get('/api/surveys/all', "api.controller:getSurveys");
-        $this->app->get('/api/raw', "api.controller:getRawData");
-        $this->app->get('/api/surveys/{id}', "api.controller:getSurvey");
+        $this->app->get('/api/surveys/all', "survey.api.controller:getSurveys");
+        $this->app->get('/api/raw', "survey.api.controller:getRawData");
+        $this->app->get('/api/surveys/{id}', "survey.api.controller:getSurvey");
     }
 }
