@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+
+import 'amcharts3';
+import 'amcharts3/amcharts/serial';
+import 'amcharts3/amcharts/themes/light';
+
 import AmCharts from "@amcharts/amcharts3-react";
 
-require('amcharts3');
 // Generate random data
 function generateData() {
   var firstDate = new Date();
