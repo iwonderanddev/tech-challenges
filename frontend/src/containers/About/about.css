@@ -1,0 +1,6 @@
+.about-page {
+  width: 90%;
+  margin: 15px auto; }
+  .about-page .ant-card {
+    border: 1px solid #ccc;
+    margin: 15px; }
