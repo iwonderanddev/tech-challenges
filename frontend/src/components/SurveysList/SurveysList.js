@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import * as surveysActions from '../../actions/surveys';
-import { Icon, Spin } from 'antd';
+import { Icon, Spin, Button } from 'antd';
 
-
+require('./surveysList.css');
 class SurveysList extends Component {
     componentWillMount() {
         const {fetchSurveys} = this.props;
@@ -15,7 +15,10 @@ class SurveysList extends Component {
         return surveys.map((survey,index) => {
             return (
                 <li className="list-group-item" key={index}>
-                    <Link to={`surveys/${survey.code}`}> {survey.name} ({survey.code})</Link>
+                    <Button type="primary" icon="notification" size='large'>
+                        <Link to={`surveys/${survey.code}`}> {survey.name} ({survey.code})</Link>
+                    </Button>
+
                 </li>
             );
         });

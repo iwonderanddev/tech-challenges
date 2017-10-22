@@ -1,4 +1,5 @@
-.survey{
+.survey-container{
+
     &.loading{
         display: flex;
         flex-direction: column;
@@ -11,5 +12,11 @@
         width: 90%;
         margin: auto;
         border-radius: 10px;
+    }
+    .qcm,.numeric,.date{
+        h4{
+            font-weight: bold;
+            font-size : 2em;
+        }
     }
 }

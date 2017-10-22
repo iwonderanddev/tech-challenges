@@ -7,8 +7,8 @@ import './app.css';
 import {Home} from '../Home/Home'
 import About from '../About'
 import {AppMenu} from '../Menu';
-import {Surveys} from '../Surveys'
-import {SurveyView} from '../SurveyView'
+import {Surveys} from '../Surveys/Surveys'
+import {SurveyView} from '../SurveyView/SurveyView'
 
 export const App = () => (
     <div>

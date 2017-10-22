@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import * as surveysActions from '../../actions/surveys';
 import { Icon, Spin } from 'antd';
 
+import Graph from '../AmCharts/Graph';
+
 import ('./survey.css');
 
 class Survey extends Component {
@@ -17,18 +19,11 @@ class Survey extends Component {
             result.push({'name':item,'value':data[item]});
         }
         return (
-            <ul>
-                {
-                    result.map((item,index) => {
-                    return (
-                        <li className="list-group-item" key={index}>
-                            {item.name} : {item.value}
-                        </li>
-                    )
-                })
-            }
-            </ul>
-        );
+            <Graph title="Products Data" data={result} axis="Amount" />
+        )
+    }
+    parseDate(date){
+        return new Date(Date.parse(date)).toUTCString();
     }
     renderSurvey(survey) {
         const {qcm, date, numeric} = survey;
@@ -37,28 +32,28 @@ class Survey extends Component {
             <div className="survey">
                 <p>{survey.survey.name}</p>
 
-                <ul>
-                    <li>{qcm.question}</li>
-                    <li>{this.getQCMData(qcm.answer)}</li>
-                </ul>
-                <ul>
-                    <li>{numeric.question}</li>
-                    <li>{numeric.answer}</li>
-                </ul>
-                <ul>
-                    <li>{date.question}</li>
-                    <li>
+                <div className="qcm">
+                    <h4>{qcm.question}</h4>
+                    <div>{this.getQCMData(qcm.answer)}</div>
+                </div>
+                <div className="numeric">
+                    <h4>{numeric.question}</h4>
+                    <div>{numeric.answer}</div>
+                </div>
+                <div className="date">
+                    <h4>{date.question}</h4>
+                    <div>
                         {
                             date.answer.map((date,index) => {
                                 return (
-                                    <span className="list-group-item" key={index}>
-                                        {date}
-                                    </span>
+                                    <p className="list-group-item" key={index}>
+                                        {this.parseDate(date)}
+                                    </p>
                                 )
                             })
                         }
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -77,10 +72,8 @@ class Survey extends Component {
         }
 
         return (
-            <div className="container">
-                <ul className="survey">
-                    {this.renderSurvey(survey)}
-                </ul>
+            <div className="survey-container">
+                {this.renderSurvey(survey)}
             </div>
         );
     }

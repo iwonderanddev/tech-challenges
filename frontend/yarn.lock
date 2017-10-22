@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@amcharts/amcharts3-react@v3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@amcharts/amcharts3-react/-/amcharts3-react-3.0.0.tgz#9a1a554dc3b104fe252ec7852a216cba781cb335"
+  dependencies:
+    create-react-class "^15.5.2"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -92,6 +98,10 @@ align-text@^0.1.1, align-text@^0.1.3:
 alphanum-sort@^1.0.1, alphanum-sort@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
+
+amcharts3@^3.21.2:
+  version "3.21.2"
+  resolved "https://registry.yarnpkg.com/amcharts3/-/amcharts3-3.21.2.tgz#4d4dc661059369267f74a2b028850f069314ac3c"
 
 amdefine@>=0.0.4:
   version "1.0.1"
