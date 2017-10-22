@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import * as surveysActions from '../../actions/surveys';
-import { Icon } from 'antd';
+import { Icon, Spin } from 'antd';
 
 
 class SurveysList extends Component {
@@ -27,6 +27,7 @@ class SurveysList extends Component {
             return(
             <div className="surveysList">
                 <h3>Loading...</h3>
+                <Spin />
             </div>
             )
         } else if(error) {

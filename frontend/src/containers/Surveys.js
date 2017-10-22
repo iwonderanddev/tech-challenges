@@ -11,7 +11,7 @@ export const Surveys = props => (
             </Col>
         </Row>
         <Row>
-            <Col span={8}>
+            <Col>
                 <SurveysList />
             </Col>
         </Row>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import * as surveysActions from '../actions/surveys';
-import { Icon } from 'antd';
+import * as surveysActions from '../../actions/surveys';
+import { Icon, Spin } from 'antd';
 
+import ('./survey.css');
 
 class Survey extends Component {
     componentWillMount() {
@@ -66,8 +67,9 @@ class Survey extends Component {
         const { survey, loading, error } = this.props.survey;
         if(loading) {
             return(
-            <div className="container">
+            <div className="survey">
                 <h3>Loading...</h3>
+                <Spin />
             </div>
             )
         } else if(error) {
@@ -76,7 +78,7 @@ class Survey extends Component {
 
         return (
             <div className="container">
-                <ul className="survey-container">
+                <ul className="survey">
                     {this.renderSurvey(survey)}
                 </ul>
             </div>
