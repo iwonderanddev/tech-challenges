@@ -1,0 +1,6 @@
+.surveysList .list-group-item {
+  margin: 10px;
+  font-weight: bold;
+  padding: 5px; }
+  .surveysList .list-group-item a {
+    color: white; }

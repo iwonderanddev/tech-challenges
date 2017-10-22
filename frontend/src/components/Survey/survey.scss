@@ -1,0 +1,22 @@
+.survey-container{
+
+    &.loading{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 50vh;
+        padding: 10vh 10vw;
+        justify-content: space-around;
+        font-size: 3vw;
+        background: #ccc;
+        width: 90%;
+        margin: auto;
+        border-radius: 10px;
+    }
+    .qcm,.numeric,.date{
+        h4{
+            font-weight: bold;
+            font-size : 2em;
+        }
+    }
+}
