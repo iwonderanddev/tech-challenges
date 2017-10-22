@@ -5,7 +5,7 @@ import './app.css';
 
 
 import {Home} from '../Home/Home'
-import About from '../About'
+import About from '../About/About'
 import {AppMenu} from '../Menu';
 import {Surveys} from '../Surveys/Surveys'
 import {SurveyView} from '../SurveyView/SurveyView'
