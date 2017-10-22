@@ -8,7 +8,7 @@ const INITIAL_STATE = {
     surveys: {
         surveys: [],
         error:null,
-        loading: false
+        loading: true
     }
 };
 
@@ -17,12 +17,13 @@ export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
 
   case FETCH_SURVEYS: // start fetching surveys
-  	return { ...state, postsList: {posts:[], error: null, loading: true} };
+  	return { ...state, surveysList: {surveys:[], error: null, loading: true} };
   case FETCH_SURVEYS_SUCCESS:
-    return { ...state, postsList: {posts: action.payload, error:null, loading: false} };
+    return { ...state, surveysList: {surveys: action.payload, error:null, loading: false} };
   case FETCH_SURVEYS_FAILURE:
-    error = action.payload || {message: action.payload.message};
-    return { ...state, postsList: {posts: [], error: error, loading: false} };
+  	console.log('pay',action.payload);
+    error = action.payload;
+    return { ...state, surveysList: {surveys: [], error: error, loading: false} };
   default:
     return state;
   }

@@ -3,14 +3,16 @@ import axios from 'axios';
 //SURVEY list
 export const FETCH_SURVEYS = 'FETCH_SURVEYS';
 export const FETCH_SURVEYS_SUCCESS = 'FETCH_SURVEYS_SUCCESS';
+export const FETCH_SURVEYS_FAILURE = 'FETCH_SURVEYS_FAILURE';
 export const RESET_SURVEYS = 'RESET_SURVEYS';
 
 //Fetch SURVEY
 export const FETCH_SURVEY = 'FETCH_SURVEY';
 export const FETCH_SURVEY_SUCCESS = 'FETCH_SURVEY_SUCCESS';
+export const FETCH_SURVEY_FAILURE = 'FETCH_SURVEY_FAILURE';
 export const RESET_ACTIVE_SURVEY = 'RESET_ACTIVE_SURVEY';
 
-const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://localhost:8080/api' : '/api';
+const ROOT_URL = 'http://localhost:8080/api';
 
 export function fetchSurveys() {
     const request = axios({
@@ -25,7 +27,7 @@ export function fetchSurveys() {
     };
 }
 
-export function fetchSurveysSuccess(SURVEYs) {
+export function fetchSurveysSuccess(surveys) {
     return {
         type: FETCH_SURVEYS_SUCCESS,
         payload: surveys
@@ -49,7 +51,7 @@ export function fetchSurvey(id) {
 }
 
 
-export function fetchSurveySuccess(activeSURVEY) {
+export function fetchSurveySuccess(activeSurvey) {
     return {
         type: FETCH_SURVEY_SUCCESS,
         payload: activeSurvey
