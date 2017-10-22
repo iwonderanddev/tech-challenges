@@ -27,10 +27,10 @@ export function fetchSurveys() {
     };
 }
 
-export function fetchSurveysSuccess(surveys) {
+export function fetchSurveysSuccess(response) {
     return {
         type: FETCH_SURVEYS_SUCCESS,
-        payload: surveys
+        payload: response
     };
 }
 

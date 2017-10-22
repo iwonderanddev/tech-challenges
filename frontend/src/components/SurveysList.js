@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 import * as surveysActions from '../actions/surveys';
 
 
@@ -10,10 +11,10 @@ class SurveysList extends Component {
     }
 
     renderSurveys(surveys) {
-        return surveys.map((survey) => {
+        return surveys.map((survey,index) => {
             return (
-                <li className="list-group-item" key={survey._id}>
-                    {{survey}}
+                <li className="list-group-item" key={index}>
+                    <Link to={`surveys/${survey.code}`}> {survey.name} ({survey.code})</Link>
                 </li>
             );
         });
@@ -21,11 +22,9 @@ class SurveysList extends Component {
 
     render() {
         const { surveys, loading, error } = this.props.surveys;
-console.log(surveys, error,loading);
         if(loading) {
             return(
             <div className="container">
-                <h1>Surveys</h1>
                 <h3>Loading...</h3>
             </div>
             )
@@ -35,7 +34,6 @@ console.log(surveys, error,loading);
 
         return (
             <div className="container">
-                <h1>Surveys</h1>
                 <ul className="list-group">
                     {this.renderSurveys(surveys)}
                 </ul>
@@ -58,8 +56,7 @@ const mapDispatchToProps = (dispatch) => {
         fetchSurveys: () => {
             const request = dispatch(surveysActions.fetchSurveys());
             request.payload.then((response) => {
-                console.log('resp',response);
-                dispatch(surveysActions.fetchSurveysSuccess(response.payload.data))
+                dispatch(surveysActions.fetchSurveysSuccess(response.data))
             }).catch((err)=>{
                 dispatch(surveysActions.fetchSurveysFailure(err))
             })
