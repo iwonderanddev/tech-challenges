@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import * as surveysActions from '../actions/surveys';
+import * as surveysActions from '../../actions/surveys';
+import { Icon } from 'antd';
 
 
 class SurveysList extends Component {
@@ -24,16 +25,16 @@ class SurveysList extends Component {
         const { surveys, loading, error } = this.props.surveys;
         if(loading) {
             return(
-            <div className="container">
+            <div className="surveysList">
                 <h3>Loading...</h3>
             </div>
             )
         } else if(error) {
-            return <div className="alert alert-danger">Error: {error.message}</div>
+            return <div className="alert alert-danger"><Icon type="disconnect" /> Error: {error.message}</div>
         }
 
         return (
-            <div className="container">
+            <div className="surveysList">
                 <ul className="list-group">
                     {this.renderSurveys(surveys)}
                 </ul>

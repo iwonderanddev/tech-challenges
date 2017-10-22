@@ -1,0 +1,5 @@
+@import url(~antd/dist/antd.css);
+.ant-menu-item {
+  font-size: 20px; }
+  .ant-menu-item .anticon {
+    font-size: 20px; }

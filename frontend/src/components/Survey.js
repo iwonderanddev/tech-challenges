@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import * as surveysActions from '../actions/surveys';
+import { Icon } from 'antd';
 
 
 class Survey extends Component {
@@ -50,7 +51,7 @@ class Survey extends Component {
                             date.answer.map((date,index) => {
                                 return (
                                     <span className="list-group-item" key={index}>
-                                        {date} 
+                                        {date}
                                     </span>
                                 )
                             })
@@ -70,7 +71,7 @@ class Survey extends Component {
             </div>
             )
         } else if(error) {
-            return <div className="alert alert-danger">Error: {error.message}</div>
+            return <div className="alert alert-danger"><Icon type="disconnect" /> Error: {error.message}</div>
         }
 
         return (

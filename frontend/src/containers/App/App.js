@@ -1,17 +1,18 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom'
-import Home from '../Home'
+import Button from 'antd/lib/button';
+import './app.css';
+
+
+import {Home} from '../Home/Home'
 import About from '../About'
+import {AppMenu} from '../Menu';
 import {Surveys} from '../Surveys'
 import {SurveyView} from '../SurveyView'
 
 export const App = () => (
     <div>
-        <header>
-            <Link to="/">Home</Link>
-            <Link to="/surveys">Surveys</Link>
-            <Link to="/about">About</Link>
-        </header>
+        <AppMenu />
 
         <main>
             <Route exact path="/" component={Home} />
