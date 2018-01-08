@@ -15,7 +15,11 @@ What we expect to learn about you from this is:
 * How you communicate through the code and/or documentation
 
 Fork this repository in your github account.  
-Now it's time to code, first start with the [backend](backend) challenge, then with the [frontend](frontend).  
-When it's done, send us the URL of your fork, we will do a code review as quick as possible (~1 day) and getting back to you for the next step.
 
-Happy coding :)
+You are a **"fullstack" developper**, it's time to code:
+* start with the [backend challenge](backend)
+* then with the [frontend challenge](frontend)
+
+You are an **Ops**, go to [ops challenge](ops).  
+
+When it's done, send us the URL of your fork, we will do a review as quick as possible (~1 day) and getting back to you for the next step.
