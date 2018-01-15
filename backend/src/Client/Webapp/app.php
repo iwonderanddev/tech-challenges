@@ -20,3 +20,5 @@ $app->get('/', function () use ($app) {
 });
 
 $app->run();
+
+return $app;
