@@ -16,11 +16,11 @@ php -S localhost:8080 -t web web/index.php
 
 ## Guidelines
 
-We want to see your skills to design business code to produce **efficient** and **maintenable** code over time. This exercice might seem simple and some shortcuts can be used to develop these features quickly but we are more interested in how you might structure your code and classes if these features were to be just the **beginning of a larger project** destined to **evolve in time**.
+We want to see your skills to design business code to produce **efficient** and **maintainable** code over time. This exercice might seem simple and some shortcuts can be used to develop these features quickly but we are more interested in how you might structure your code and classes if these features were to be just the **beginning of a larger project** destined to **evolve in time**.
 
 DO
 * Do use good design
-* Do maintenable design
+* Do maintainable design
 * Do use unit tests
 * Do use dependency management
 * Do use consistent code styles
@@ -32,7 +32,7 @@ DON'T DO
 * Do not loose time with optimization
 * Do not use Docker, Vagrant... we must be able to run the api only with the PHP server
 
-## Datas
+## Data
 
 The data folder contains some JSON files. Think of it as a database or any other persistence system.
 This is a list of survey answers by a sales man.  
@@ -74,4 +74,4 @@ The aggregation will be different depending on the question type:
 * number: the **average** of all answers
 * date: a list of `dates`
 
-The API result is not defined, do what you want, be creative and data centric, you will use the return in the frontend part of the test.
+The API result is not defined, do what you want, be creative and data centric.
