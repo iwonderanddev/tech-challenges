@@ -2,9 +2,9 @@
 
 ## Setup
 
-To avoid losing time, we have setup a silex boilerplate to handle HTTP request/response.
+To avoid losing time, we have setup a Silex boilerplate to handle HTTP request/response.
 
-> The choice of Silex is arbitrary, we could have used symfony, laravel, whatever the frameworks... We are not interested in finding a master of frameworks, but a developer who knows how to code business rules so that they can be maintained over time.
+> The choice of Silex is arbitrary, we could have used Symfony, Laravel, whatever the frameworks... We are not interested in finding a master of frameworks, but a developer who knows how to code business rules so that they can be maintained over time.
 
 ```bash
 cd backend
@@ -16,7 +16,7 @@ php -S localhost:8080 -t web web/index.php
 
 ## Guidelines
 
-We want to see your skills to design business code to produce **efficient** and **maintainable** code over time. This exercice might seem simple and some shortcuts can be used to develop these features quickly but we are more interested in how you might structure your code and classes if these features were to be just the **beginning of a larger project** destined to **evolve in time**.
+We want to see your skills to design business code to produce **efficient** and **maintainable** code over time. This exercise might seem simple and some shortcuts can be used to develop these features quickly but we are more interested in how you might structure your code and classes if these features were to be just the **beginning of a larger project** destined to **evolve in time**.
 
 DO
 * Do use good design
@@ -47,7 +47,7 @@ You have 3 kind of questions:
 
 ### Stage 1
 
-Expose the surveys throw an api endpoint for read purpose.  
+Expose the surveys through an api endpoint for read purpose.
 
 The API result must be:
 ```JSON
