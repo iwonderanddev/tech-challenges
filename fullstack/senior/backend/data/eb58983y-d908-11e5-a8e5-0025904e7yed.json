@@ -1,0 +1,17 @@
+{
+    "survey": {
+        "name": "Melun",
+        "code": "XX3"
+    },
+    "questions": [{
+        "type": "qcm",
+        "label": "What best sellers are available in your store?",
+        "options": ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5", "Product 6"],
+        "answer": [true, true, true, true, true, false]
+    }, {
+        "type": "numeric",
+        "label": "Number of products?",
+        "options": null,
+        "answer": 6200
+    }]
+}

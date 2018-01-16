@@ -1,0 +1,17 @@
+{
+    "survey": {
+        "name": "Chartres",
+        "code": "XX2"
+    },
+    "questions": [{
+        "type": "qcm",
+        "label": "What best sellers are available in your store?",
+        "options": ["Product 1", "Product 2", "Product 3", "Product 4", "Product 5", "Product 6"],
+        "answer": [false, true, true, false, true, false]
+    }, {
+        "type": "numeric",
+        "label": "Number of products?",
+        "options": null,
+        "answer": 4200
+    }]
+}
