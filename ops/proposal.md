@@ -79,7 +79,9 @@ this will be detailled on the schema (to be completed).
  ### Add a caching server 
  we can use the service Elasticache of AWS. We can integrate it easily with our architecture, the service is managed by AWS, so this will save us a time to work on other features.  The cons i can see, is the unavailibity of the server in case of an overhead.
  
+## Architecture Design in the main Region
  
+ <p align="center"><img src="IWD_test.png" /></p>
  
  
  
