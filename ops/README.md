@@ -2,7 +2,7 @@
 
 ## The application
 
-You are working as a sysadmin in a new company. This company is about to release a new blog, via a blogging application developped internally.
+You are working as a sysadmin in a new company. This company is about to release a new webapp developped internally.
 
 This application is multi-tier:
 
