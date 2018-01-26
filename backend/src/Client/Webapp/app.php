@@ -7,7 +7,8 @@ if (file_exists(ROOT_PATH.'/vendor/autoload.php') === false) {
 }
 require_once ROOT_PATH.'/vendor/autoload.php';
 
-include 'routes/surveyController.php'
+include 'routes/surveyController.php';
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
@@ -22,12 +23,12 @@ $app->get('/', function () use ($app) {
 
 
 $app->get('/api/v1/surveys', function () use($app) {
-    return $app->storage(0);
+    return $app->json(storage(0));
 });
 
 $app->get('/api/v1/survey', function (Request $request) use($app) {
-    $code = $request->get('code');   
-    return $app->groupSurveys($code);
+    $code = $request->get('code');
+    return $app->json(groupSurveys($code));
 });
 
 
