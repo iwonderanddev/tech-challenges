@@ -19,17 +19,18 @@ function storage($value){
 }
 
 function groupSurveys($code){
-    $productList = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0, 6 => 0);
-    //$product1 =[]; $product2 =[];$product3 =[];$product4 =[];$product5 =[];$product6 =[];
+    $productList = array("Product 1" => 0, "Product 2" => 0, "Product 3" => 0, "Product 4" => 0, "Product 5" => 0, "Product 6" => 0);
     $countMatches = 0;
     $sumation = 0;
     $listOfDates = [];
     $allSurveys = storage(1);
+    $product ='Product ';
     foreach($allSurveys as $currentSurvey){
         if($currentSurvey->survey->code == $code){
             $i = 1;
             foreach($currentSurvey->questions[0]->answer as $feedback){
-                $productList[$i++] += $feedback ? 1 : 0 ;
+                $index = $product . (string) $i++;
+                $productList[$index] += $feedback ? 1 : 0 ;
             }
             $countMatches++;
             $sumation += $currentSurvey->questions[1]->answer;
@@ -38,6 +39,7 @@ function groupSurveys($code){
     }
     arsort($productList);
     $average = $sumation / $countMatches;
+    $average = number_format((float)$average, 2, '.', '');
     return array('bestSellingProducts' => $productList, 'averageNumberOfProducts' => $average,
         'Dates' => $listOfDates);
 }
