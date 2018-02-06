@@ -26,4 +26,5 @@ Profiles:
 * Senior *fullstack* developer, [your challenge](fullstack/senior)
 * Backend developer, [your challenge](backend)
 * Frontend developer, [your challenge](frontend)
+* Web integrator, [your challenge](integrator)
 * Ops, [your challenge](ops)
