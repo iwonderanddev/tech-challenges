@@ -6,7 +6,7 @@ Unity3D, a C# editor and few 3d meshes of your choice.
 
 ## Guidelines
 
-We want to see how you tackle a technical problem.
+We want to see how you tackle a technical problem. We also want to see your skills to produce efficient and maintainable code over time. This exercise might seem simple and the expected behaviour could be achieved in a single function but we are also interested in how you might structure your code and classes considering this feature may be the beginning of a larger one destined to evolve in time.
 
 ## Content
 
