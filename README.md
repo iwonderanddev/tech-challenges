@@ -28,4 +28,4 @@ Profiles:
 * Frontend developer, [your challenge](frontend)
 * Web integrator, [your challenge](integrator)
 * Ops, [your challenge](ops)
-* Senior 3D developer, [your challenge](3D)
+* Senior 3D developer, [your challenge](3D/senior)
