@@ -1,11 +1,14 @@
 {
     "require": {
         "php": ">=7.0",
-        "silex/silex": "^2.0"
+        "silex/silex": "^2.0",
+        "symfony/serializer": "^3.2",
+        "symfony/property-info": "^3.2",
+        "symfony/property-access": "^3.2"
     },
     "autoload": {
         "psr-4": {
-            "IWD\\JOBINTERVIEW\\": "src/"
+            "IWD\\JOBINTERVIEW\\": "src/IWD/JOBINTERVIEW/"
         }
     },
     "require-dev": {
