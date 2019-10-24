@@ -2,7 +2,7 @@
 
 ## Setup
 
-Unity3D 2018 and a C# editor.
+Unity3D 2018.3.12 ( https://download.unity3d.com/download_unity/8afd630d1f5b/Windows64EditorInstaller/UnitySetup64-2018.3.12f1.exe ) and a C# editor such as Visual Studio
 
 ## Guidelines
 
@@ -13,13 +13,10 @@ Our tests are implemented using Zenject and NUnit, you have all the necessary in
 
 We have provided a small module that implements saving files to a cache, and retrieving them. 
 The main class is FileCacheStorage, and this is the one we want to test. 
-We have provided the FileCacheStorageTest file and The test functions already exist inside, so what we would like you to do is to implement them.
+We have provided the FileCacheStorageTest file to get you started, so all you need to do is write your test functions inside. 
+At the top of the file there are also some keywords to get you started.
 
-What we aim at is unit testing rather than integration or end-to-end tests. So logically basic understanding of what the module does should suffise. 
+We aim at unit testing rather than integration or end-to-end tests.
+The naming convention we usually follow for unit tests is `Does_MyFunction_DoThis_When_SomethingHappens`, allowing to clarify the intent of the test.
 
-At the top of the file there are some keywords to get you started. 
-FYI to run the tests in Unity, you need to go to Window->General->Test Runner, and switch to the "Play mode" tests (toggle at the top)
-
-## Bonus 
-
-If you find that a functionality of the module is not unit-tested, you can add the missing test(s).
+The tests should run in Unity's Test Runner ( open Window->General->Test Runner, and switch to the "Play mode" tests  via the toggle at the top )

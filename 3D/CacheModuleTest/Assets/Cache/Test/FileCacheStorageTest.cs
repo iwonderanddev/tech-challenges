@@ -11,57 +11,11 @@ using Moq;
 [TestFixture]
 public class FileCacheStorageTest : ZenjectUnitTestFixture
 {
-    class AnyException : Exception
-    {
-    }
 
+    // A sample test function to indicate the usage of the Test tag. 
+    // https://docs.unity3d.com/2018.3/Documentation/Manual/testing-editortestsrunner.html
     [Test]
-    public void Should_Has_ReturnTrue_When_EntryExists()
-    {
-    }
-
-    [Test]
-    public void Should_Has_ReturnFalse_When_EntryDoesntExist()
-    {
-    }
-
-    [Test]
-    public void Should_Has_ReturnFalse_After_DeleteEntry()
-    {
-    }
-
-    [Test]
-    public void Should_MatchesVersion_ReturnFalse_When_EntryHasBadVersion()
-    {
-    }
-
-    [Test]
-    public void Should_MatchesVersion_ReturnTrue_When_EntryHasCorrectVersion()
-    {
-    }
-
-    [Test]
-    public void Should_Get_ReturnValidData_When_EntryExists()
-    {
-    }
-
-    [Test]
-    public void Should_Get_ReturnNull_When_EntryDoesntExist()
-    {
-    }
-
-    [Test]
-    public void Should_Get_ThrowException_When_FileSystemReadThrowsException()
-    {
-    }
-
-    [Test]
-    public void Should_Get_ReturnSameData_ThatWasSet()
-    {
-    }
-
-    [Test]
-    public void Should_Set_ThrowException_When_FileSystemWriteThrowsException()
+    public void SampleTest()
     {
     }
 }
