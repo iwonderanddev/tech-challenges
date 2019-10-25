@@ -28,4 +28,5 @@ Profiles:
 * Frontend developer, [your challenge](frontend)
 * Web integrator, [your challenge](integrator)
 * Ops, [your challenge](ops)
-* Senior 3D developer, [your challenge](3D/senior)
+* Senior 3D developer, [challenge 1](3D/senior) or [challenge 2](3D/MeshCombiner)
+* C# developer, [your challenge](3D/CacheModuleTest)
