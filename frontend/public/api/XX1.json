@@ -1,0 +1,30 @@
+[
+   {
+      "type" : "qcm",
+      "label" : "What best sellers are available in your store?",
+      "result" : {
+         "Product 2" : 2,
+         "Product 3" : 1,
+         "Product 4" : 0,
+         "Product 1" : 0,
+         "Product 5" : 4,
+         "Product 6" : 0
+      }
+   },
+   {
+      "label" : "Number of products?",
+      "type" : "numeric",
+      "result" : 697.2
+   },
+   {
+      "result" : [
+         "2017-06-09T00:00:00.000Z",
+         "2016-04-29T11:04:50.000Z",
+         "2017-09-14T09:45:00.000Z",
+         "2016-03-29T11:04:50.000Z",
+         "2016-02-28T11:04:50.000Z"
+      ],
+      "type" : "date",
+      "label" : "What is the visit date?"
+   }
+]
