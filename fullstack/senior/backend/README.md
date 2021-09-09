@@ -1,8 +1,9 @@
-# IWD senior *fullstack* challenge backend part
+# IWD senior _fullstack_ challenge backend part
 
 ## Setup
 
-To avoid losing time, we have setup a Silex boilerplate to handle HTTP request/response.
+To avoid losing time, we have setup a Silex boilerplate to handle HTTP request/response.  
+You only need PHP 7.4 setup on your computer.
 
 > The choice of Silex is arbitrary, we could have used Symfony, Laravel,
 > whatever the frameworks... We are not interested in finding a master of
@@ -27,18 +28,20 @@ were to be just the **beginning of a larger project** destined to **evolve in
 time**.
 
 DO
-* Do use good design
-* Do maintainable design
-* Do use unit tests
-* Do use dependency management
-* Do use consistent code styles
-* Do use others dependencies if you want/need it
-* Follow PSR-x
-* Show the Business in your code
+
+- Do use good design
+- Do maintainable design
+- Do use unit tests
+- Do use dependency management
+- Do use consistent code styles
+- Do use others dependencies if you want/need it
+- Follow PSR-x
+- Show the Business in your code
 
 DON'T DO
-* Do not loose time with optimization
-* Do not use Docker, Vagrant... we must be able to run the api only with the PHP server
+
+- Do not loose time with optimization
+- Do not use Docker, Vagrant... we must be able to run the api only with the PHP server
 
 ## Data
 
@@ -49,8 +52,8 @@ aggregated by survey code.
 
 You have 2 kinds of questions:
 
-* qcm: the answer is an array of `true`/`false` (based on the `option` array)
-* number: the answer is a `number`
+- qcm: the answer is an array of `true`/`false` (based on the `option` array)
+- number: the answer is a `number`
 
 ## The Test
 
@@ -59,8 +62,8 @@ by survey code.
 
 The aggregation will be different depending on the question type:
 
-* qcm: how much `Product 1`, how much `Product 2`...
-* number: the **average** of all answers
+- qcm: how much `Product 1`, how much `Product 2`...
+- number: the **average** of all answers
 
 > Note: for now, there are only 2 types of question, but we know that more will
 > be added in a very near future with different aggregation rules, so your code

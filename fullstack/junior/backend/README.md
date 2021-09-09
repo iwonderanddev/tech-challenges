@@ -1,9 +1,10 @@
-# IWD junior *fullstack* challenge backend part
+# IWD junior _fullstack_ challenge backend part
 
 ## Setup
 
 To avoid losing time, we have setup a Silex boilerplate to handle HTTP
-request/response.
+request/response.  
+You only need PHP 7.4 setup on your computer.
 
 > The choice of Silex is arbitrary, we could have used Symfony, Laravel,
 > whatever the frameworks... We are not interested in finding a master of
@@ -28,36 +29,40 @@ were to be just the **beginning of a larger project** destined to **evolve in
 time**.
 
 DO
-* Do use good design
-* Do maintainable design
-* Do use unit tests
-* Do use dependency management
-* Do use consistent code styles
-* Do use others dependencies if you want/need it
-* Follow PSR-x
-* Show the Business in your code
+
+- Do use good design
+- Do maintainable design
+- Do use unit tests
+- Do use dependency management
+- Do use consistent code styles
+- Do use others dependencies if you want/need it
+- Follow PSR-x
+- Show the Business in your code
 
 DON'T DO
-* Do not loose time with optimization
-* Do not use Docker, Vagrant... we must be able to run the api only with the PHP server
+
+- Do not loose time with optimization
+- Do not use Docker, Vagrant... we must be able to run the api only with the PHP server
 
 ## Data
 
 The data folder contains some JSON files. Think of it as a database or any other
-persistence system.  This is a list of survey answers by a sales man. Different
+persistence system. This is a list of survey answers by a sales man. Different
 surveys are identified by the code (think of it as the id). Answers will be
 aggregated by survey code.
 
 You have 3 kind of questions:
-* qcm: the answer is an array of `true`/`false` (based on the `option` array)
-* number: the answer is a `number`
-* date: the answer is a `date`
+
+- qcm: the answer is an array of `true`/`false` (based on the `option` array)
+- number: the answer is a `number`
+- date: the answer is a `date`
 
 ## The Test
 
 Expose the surveys through an api endpoint for read purpose.
 
 The API result must be:
+
 ```JSON
 [{
     "name": "Paris",
