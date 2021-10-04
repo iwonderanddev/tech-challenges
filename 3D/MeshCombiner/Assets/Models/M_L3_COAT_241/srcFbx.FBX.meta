@@ -1,0 +1,113 @@
+fileFormatVersion: 2
+guid: 1340b5e69bf93594ca7acb7b1cb3a5ce
+timeCreated: 1569846708
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: hanger
+    100002: hangers
+    100004: //RootNode
+    100006: M_L3_COAT_241
+    100008: M_L3_COAT_241_P1
+    100010: M_L3_COAT_241_P2
+    100012: M_L3_COAT_241_P2 1
+    100014: M_L3_COAT_242_P1
+    100016: Shape_f
+    100018: Shape_h
+    100020: Shape_m
+    400000: hanger
+    400002: hangers
+    400004: //RootNode
+    400006: M_L3_COAT_241
+    400008: M_L3_COAT_241_P1
+    400010: M_L3_COAT_241_P2
+    400012: M_L3_COAT_241_P2 1
+    400014: M_L3_COAT_242_P1
+    400016: Shape_f
+    400018: Shape_h
+    400020: Shape_m
+    2300000: hanger
+    2300002: M_L3_COAT_241
+    2300004: M_L3_COAT_241_P1
+    2300006: M_L3_COAT_241_P2
+    2300008: M_L3_COAT_241_P2 1
+    2300010: M_L3_COAT_242_P1
+    3300000: hanger
+    3300002: M_L3_COAT_241
+    3300004: M_L3_COAT_241_P1
+    3300006: M_L3_COAT_241_P2
+    3300008: M_L3_COAT_241_P2 1
+    3300010: M_L3_COAT_242_P1
+    4300000: hanger
+    4300002: M_L3_COAT_241
+    4300004: M_L3_COAT_241_P2
+    4300006: M_L3_COAT_242_P1
+    4300008: M_L3_COAT_241_P2
+    4300010: M_L3_COAT_241_P1
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
