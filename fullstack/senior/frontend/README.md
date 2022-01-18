@@ -10,7 +10,7 @@ npx create-react-app frontend --template typescript
 # or yarn create react-app frontend --template typescript
 cd frontend
 yarn start
-#This will open your browser to http://localhost:3000
+# This will open your browser to http://localhost:3000
 ```
 
 ## Guidelines
