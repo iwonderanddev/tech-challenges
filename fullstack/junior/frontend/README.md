@@ -5,13 +5,12 @@
 To avoid losing time, you will use a simple create-react-app bootstrap.
 
 ```bash
-cd fullstack/senior
-npx create-react-app frontend
-# or use TypeScript if you prefer
-# npx create-react-app frontend --template typescript
+cd fullstack/junior
+npx create-react-app frontend --template typescript
+# or use yarn create react-app frontend --template typescript
 cd frontend
 yarn start
-#This will open your browser to http://localhost:3000
+# This will open your browser to http://localhost:3000
 ```
 
 ## Guidelines
