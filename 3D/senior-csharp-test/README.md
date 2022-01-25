@@ -17,6 +17,6 @@ We have provided the FileCacheStorageTest file to get you started, so all you ne
 At the top of the file there are also some keywords to get you started.
 
 We aim at unit testing rather than integration or end-to-end tests.
-The naming convention we usually follow for unit tests is `Does_MyFunction_DoThis_When_SomethingHappens`, allowing to clarify the intent of the test.
+The naming convention we usually follow for unit tests is `MyFunction_DoThis_When_SomethingHappens`, allowing to clarify the intent of the test.
 
 The tests should run in Unity's Test Runner ( open Window->General->Test Runner, and switch to the "Play mode" tests  via the toggle at the top )
