@@ -1,13 +1,11 @@
 {
     "name": "CacheTest",
+    "rootNamespace": "",
     "references": [
-        "Zenject",
-        "Zenject-TestFramework",
         "Cache",
-        "Utils"
-    ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
+        "Utils",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
     ],
     "includePlatforms": [
         "Editor",
@@ -17,8 +15,15 @@
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": []
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Moq.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
