@@ -1,45 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
-[ Serializable ]
 public class FileCacheStorage : ICacheStorage
 {
-	private const string ACTUAL_VERSION = "1.0";
-	private const string DATE_FORMAT = "yyMMdd";
 	private const float EXPIRING_TIME_DAYS = 60f;
+
 	private readonly string _cachePath;
-	private readonly Dictionary<string, FileCacheEntry> _cacheEntries = new Dictionary<string, FileCacheEntry>();
-	private readonly string _fileName;
 	private readonly IFileSystem _fileSystem;
-	private readonly ISerializer _serializer;
-	public List<FileCacheEntry> CacheEntries = new List<FileCacheEntry>();
-	public string Version;
 
-	[ Serializable ]
-	public class FileCacheEntry : CacheEntry<string>
-	{
-		//FileCacheEntry stores the path of a file which contains the data, and not the data itself
-		public FileCacheEntry( string id, string version, string pathData, string lastUseDate ) : base( id, version, pathData, lastUseDate )
-		{
-		}
-	}
-
-	public FileCacheStorage( string path, string fileName, IFileSystem fileSystem, ISerializer serializer )
+	public FileCacheStorage( string path, IFileSystem fileSystem )
 	{
 		if( string.IsNullOrEmpty( path ) )
 			throw new NullReferenceException( nameof( path ) );
 
-		if( string.IsNullOrEmpty( fileName ) )
-			throw new NullReferenceException( nameof( fileName ) );
-
 		_cachePath = path;
-		_fileName = fileName;
-
 		_fileSystem = fileSystem ?? throw new NullReferenceException( nameof( fileSystem ) );
-		_serializer = serializer ?? throw new NullReferenceException( nameof( serializer ) );
 
 		InitCache();
 	}
@@ -52,218 +26,109 @@ public class FileCacheStorage : ICacheStorage
 			return;
 		}
 
-		if( TryLoadCacheEntries() )
+		ClearExpiredCacheFiles();
+	}
+
+	private void ClearExpiredCacheFiles()
+	{
+		DateTime dateNow = DateTime.UtcNow;
+
+		string[] filePaths = _fileSystem.GetFiles( _cachePath );
+
+		foreach( string filePath in filePaths )
 		{
-			CheckCacheVersion();
-			ClearExpiredEntries();
-		}
-		else
-			DeleteAll();
-	}
+			DateTime lastAccessDate;
+			try
+			{
+				lastAccessDate = _fileSystem.GetFileLastAccessTime( filePath );
+			}
+			catch( Exception e )
+			{
+				Log.LogError( "Couldn't access file last access time at path = " + filePath + ".\n" + e );
+				continue;
+			}
 
-	private bool TryLoadCacheEntries()
-	{
-		string filePath = _cachePath + "/" + _fileName;
-
-		if( !_fileSystem.FileExists( filePath ) )
-			return false;
-
-		try
-		{
-			LoadCacheEntriesFromFile( filePath );
-			return true;
-		}
-		catch( Exception e )
-		{
-			Log.LogError( "Could not load cache entries from " + filePath + "!\n" + e.Message + "\n" + e.StackTrace );
-		}
-
-		return false;
-	}
-
-	private void LoadCacheEntriesFromFile( string path )
-	{
-		string txt = _fileSystem.ReadText( path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
-		_serializer.Deserialize( txt, this );
-		CopyDeserializedEntriesToDic();
-	}
-
-	private void CopyDeserializedEntriesToDic()
-	{
-		_cacheEntries.Clear();
-		foreach( FileCacheEntry cacheEntry in CacheEntries )
-			_cacheEntries.Add( cacheEntry.Id, cacheEntry );
-	}
-
-	private void CheckCacheVersion()
-	{
-		if( Version != ACTUAL_VERSION )
-			DeleteAll();
-	}
-
-	private void ClearExpiredEntries()
-	{
-		List<FileCacheEntry> expiredEntries = GetExpiredEntries();
-
-		foreach( FileCacheEntry t in expiredEntries )
-			Delete( t.Id );
-	}
-
-	private List<FileCacheEntry> GetExpiredEntries()
-	{
-		DateTime dateNow = DateTime.Now;
-		List<FileCacheEntry> expiredEntries = new List<FileCacheEntry>();
-
-		foreach( KeyValuePair<string, FileCacheEntry> ce in _cacheEntries )
-		{
-			DateTime datetime = GetEntryLastUseDate( ce.Value );
-			TimeSpan span = dateNow - datetime;
+			TimeSpan span = dateNow - lastAccessDate;
 
 			if( span.TotalDays > EXPIRING_TIME_DAYS )
-				expiredEntries.Add( ce.Value );
-		}
-
-		return expiredEntries;
-	}
-
-	private void UpdateUseDate( string id )
-	{
-		if( _cacheEntries.ContainsKey( id ) )
-			_cacheEntries[ id ].LastUseDate = DateTime.Now.ToString( DATE_FORMAT );
-	}
-
-	private DateTime GetEntryLastUseDate( FileCacheEntry entry )
-	{
-		return DateTime.ParseExact( entry.LastUseDate, DATE_FORMAT, null );
-	}
-
-	private void SaveFile( string path, byte[] value )
-	{
-		if( !_fileSystem.DirExists( _cachePath ) )
-			_fileSystem.CreateDir( _cachePath );
-
-		_fileSystem.Write( path, value );
-	}
-
-	private void CopyEntriesToSerializeList()
-	{
-		CacheEntries.Clear();
-
-		foreach( KeyValuePair<string, FileCacheEntry> ce in _cacheEntries )
-			CacheEntries.Add( ce.Value );
-	}
-
-	private void DeleteFile( FileCacheEntry ce )
-	{
-		if( ce.Data == null )
-			return;
-
-		string path = ce.Data;
-
-		if( _fileSystem.FileExists( path ) )
-			_fileSystem.DeleteFile( path );
-	}
-
-	private void UpdateDataEntries()
-	{
-		List<FileCacheEntry> oldEntries = _cacheEntries.Values.ToList();
-		_cacheEntries.Clear();
-		TryLoadCacheEntries();
-
-		foreach( FileCacheEntry oldCe in oldEntries )
-		{
-			if( !_cacheEntries.ContainsKey( oldCe.Id ) )
-				_cacheEntries.Add( oldCe.Id, oldCe );
-			else
 			{
-				DateTime dateNewEntry = GetEntryLastUseDate( _cacheEntries[ oldCe.Id ] );
-				DateTime dateOldEntry = GetEntryLastUseDate( oldCe );
-
-				if( DateTime.Compare( dateNewEntry, dateOldEntry ) < 0 )
-					_cacheEntries[ oldCe.Id ] = oldCe;
+				try
+				{
+					_fileSystem.DeleteFile( filePath );
+				}
+				catch( Exception e )
+				{
+					Log.LogError( "Fail to delete expired cache file at path : " + filePath + ".\n" + e );
+				}
 			}
 		}
 	}
 
-	public byte[] Get( string id )
+	private void UpdateUseDate( string filePath )
 	{
-		if( !_cacheEntries.TryGetValue( id, out FileCacheEntry ce ) )
-			return null;
-
-		UpdateUseDate( id );
-		return _fileSystem.Read( ce.Data );
+		_fileSystem.SetFileLastAccessTime( filePath );
 	}
 
-	public bool Has( string id )
-    {
-        return _cacheEntries.ContainsKey( id );
-    }
-
-	public bool MatchesVersion( string id, string version )
+	public byte[] Get( string id )
 	{
+		byte[] result;
 		try
 		{
-			if( _cacheEntries[ id ].Version == version )
-				return true;
+			result = _fileSystem.Read( _cachePath + "/" + id );
 		}
 		catch( Exception e )
 		{
-			Log.LogError( "Cache entry id = " + id + " not found : " + e );
+			Log.LogError( "Fail to get the entry for id  " + id + ".\n" + e );
+			return null;
 		}
 
-		return false;
+		UpdateUseDate( id );
+
+		return result;
 	}
 
-	public void Set( byte[] value, string id, string version )
+	public bool Add( string id, byte[] value )
 	{
+		if( string.IsNullOrEmpty( id ) )
+		{
+			Log.LogError( "Fail to add a new entry : id is null or empty" );
+			return false;
+		}
+
+		if( value == null || value.Length == 0 )
+		{
+			Log.LogError( "Fail to add a new entry : byte array is null or empty" );
+			return false;
+		}
+
 		string path = _cachePath + "/" + id;
-
-		if( !Has( id ) || !_fileSystem.FileExists( path ) || !MatchesVersion( id, version ) )
-			SaveFile( path, value );
-
-		_cacheEntries[ id ] = new FileCacheEntry( id, version, path, DateTime.Now.ToString( DATE_FORMAT ) );
-	}
-
-	public void Delete( string id )
-	{
-		if( !_cacheEntries.TryGetValue( id, out FileCacheEntry ce ) )
-			return;
 
 		try
 		{
-			DeleteFile( ce );
+			_fileSystem.Write( path, value );
 		}
-		catch( Exception )
+		catch( Exception e )
 		{
-			Log.LogError( "Fail to delete file : " + ce );
-			return;
+			Log.LogError( "Fail to add a new entry : " + e );
+			return false;
 		}
 
-		_cacheEntries.Remove( id );
+		return true;
 	}
 
-	public void DeleteAll()
+	public bool Remove( string id )
 	{
-		_cacheEntries.Clear();
-		CacheEntries.Clear();
-		_fileSystem.DeleteDir( _cachePath );
-	}
+		string filePath = _cachePath + "/" + id;
+		try
+		{
+			_fileSystem.DeleteFile( filePath );
+		}
+		catch( Exception e )
+		{
+			Log.LogError( "Fail to delete file at path : " + filePath + ".\n" + e );
+			return false;
+		}
 
-	public void SaveCacheStorageFile()
-	{
-		if( !_fileSystem.DirExists( _cachePath ) )
-			return;
-
-		UpdateDataEntries();
-		Version = ACTUAL_VERSION;
-		CopyEntriesToSerializeList();
-		string dataCacheTxt = _serializer.Serialize( this );
-
-		string cacheFilePath = _cachePath + "/" + _fileName;
-
-		if( _fileSystem.FileExists( cacheFilePath ) )
-			_fileSystem.DeleteFile( cacheFilePath );
-
-		_fileSystem.Write( cacheFilePath, Encoding.UTF8.GetBytes( dataCacheTxt ) );
+		return true;
 	}
 }
