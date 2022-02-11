@@ -1,0 +1,13 @@
+DROP DATABASE IF EXISTS wordpress;
+
+CREATE DATABASE wordpress;
+
+DROP USER IF EXISTS 'wordpress' ;
+flush privileges;
+CREATE USER wordpress IDENTIFIED BY "W03dpr3ss!$";
+
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
+ON wordpress.*
+TO wordpress;
+
+FLUSH PRIVILEGES;

@@ -1,0 +1,88 @@
+---
+
+- name: installation_wordpress
+  hosts: ubuntu-web-server
+  become: yes
+
+  tasks:
+    - name: Include wordpress vars
+      include_vars:
+        dir: ../../group_vars/
+      tags: wordpress
+
+    - name: update apt
+      shell: "apt update"
+      tags: wordpress
+
+    - name: Install dependencies
+      shell: "apt install apache2 
+                                  ghostscript \
+                                  libapache2-mod-php \
+                                  mysql-server \
+                                  php \
+                                  php-bcmath \
+                                  php-curl \
+                                  php-imagick \
+                                  php-intl \
+                                  php-json \
+                                  php-mbstring \
+                                  php-mysql \
+                                  php-xml \
+                                  php-zip -y"
+      tags: wordpress
+
+    - name: Prepare Wordpress install
+      shell: "mkdir -p /srv/www && chown www-data: /srv/www"
+      tags: wordpress
+            
+    - name: Install Wordpress
+      shell: "curl {{ wordpress_archive_url }} | tar zx -C /srv/www"
+      tags: wordpress
+
+    - name: Config apache2
+      template: src=../../templates/wordpress/wordpress.conf dest={{ wordpress_config_apache_path }}
+      tags: wordpress
+
+    - name: Enable wordpress
+      shell: "sudo a2ensite wordpress"
+      tags: wordpress
+
+    - name: Enable Url
+      shell: "sudo a2enmod rewrite"
+      tags: wordpress
+
+    - name: Disable default "it works" site
+      shell: "a2dissite 000-default"
+      tags: wordpress
+
+    - name: change name
+      shell: "mv /srv/www/wordpress/wp-config-sample.php {{ wordpress_config_db_path }}"
+
+    - name: Config database
+      shell: "sed -i 's/database_name_here/{{ wordpress_db_database }}/' {{ wordpress_config_db_path }}; \
+              sed -i 's/username_here/{{ wordpress_db_user }}/' /{{ wordpress_config_db_path }}; \
+              sed -i 's/password_here/{{ wordpress_db_password }}/' {{ wordpress_config_db_path }}; \
+              sed -i 's/localhost/{{ wordpress_db_server_ip }}/' {{ wordpress_config_db_path }};"
+    
+    - name: Config authent
+      shell: "echo auth"
+    
+    - name: Change rights
+      shell: "chmod 644 {{ wordpress_config_db_path }}"
+    
+    - name: Reload apache2
+      shell: "service apache2 reload"
+      tags: wordpress
+
+    - name: get wp-cli
+      shell: "curl -O {{ wp_cli_url }} ;\
+              chmod +x wp-cli.phar ;\
+              mv wp-cli.phar /usr/local/bin/wp-cli"
+
+    - name: wp-cli setup
+      become: no
+      shell: "wp-cli core download; \
+             cd /srv/www/wordpress && wp-cli core install --url=IWD-CHALLENGE --title=IWD-CHALLENGE --admin_user={{ wordpress_admin_user }} --admin_password={{ wordpress_admin_password }} --admin_email={{ wordpress_admin_email }}"
+
+    
+    

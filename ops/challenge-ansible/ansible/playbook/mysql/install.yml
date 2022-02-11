@@ -1,0 +1,33 @@
+---
+
+- name: installation_mysql
+  hosts: ubuntu-db-server
+  become: yes
+  
+  tasks:
+    - name: Include mysql vars
+      include_vars:
+        file: ../../group_vars/mysql.yml
+      tags: mysql
+
+    - name: Install mysql
+      shell: "apt-get update && sudo apt-get install mysql-server -y"
+      tags: mysql
+
+    - name: Transfer executable SQL script
+      copy: src=./scripts/ dest=./
+      tags: mysql
+
+    - name: Setting up Wordpress Database
+      shell: mysql -u root < ./newDb.sql
+      tags: mysql
+
+    - name: Permitting distant access to db
+      ansible.builtin.replace:
+        path: /etc/mysql/mysql.conf.d/mysqld.cnf
+        regexp: "127.0.0.1"
+        replace: "0.0.0.0" 
+        
+    - name: Restart mysql server
+      shell: "ufw allow mysql && service mysql restart"
+      tags: mysql

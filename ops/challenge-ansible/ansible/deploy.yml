@@ -1,0 +1,5 @@
+---
+
+  - import_playbook: playbook/mysql/install.yml
+  - import_playbook: playbook/wordpress/install.yml
+  

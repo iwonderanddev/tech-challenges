@@ -1,0 +1,29 @@
+---
+#wordpress config
+wordpress_archive_url: "https://wordpress.org/latest.tar.gz"
+wordpress_config_apache_path: "/etc/apache2/sites-available/wordpress.conf"
+wordpress_config_db_path: "/srv/www/wordpress/wp-config.php"
+
+#wordpress DB
+wordpress_db_server_ip: "192.168.10.20"
+wordpress_db_user: "wordpress"
+wordpress_db_password: "W03dpr3ss!$"
+wordpress_db_database: "wordpress"
+
+#wordpress sec auth
+wordpress_auth_key: "P~KeT.Vt4XjUzSac,e*~$PoDr`?Bteo&)}os?ya|u7`|<,OlPpw&F}u8/J6RrYy}"
+wordpress_secure_auth_key: "|TJs ?eXD_P_ZoJugQ-O-:S2pt 4TZ8f(4xJX30=j2<ADAM2LORG%&qFS_mnDq]}"
+wordpress_logged_in_key: "Qs<6NOO(P;KKR(2#g$$}+W7(8 y]#3+_v)0|*DzCt(9gMLHJ<N*ANX*~%BQ[]>Mi"
+wordpress_nonce_key: "np<3[~z`53g1oa@~:7Ioy+29sXd-Q>(;:1*_hu{95|Fb2Y+@iki@{Zn@Rk|jE7rR"
+wordpress_auth_salt: "]lG<XD%1*D*5OdTIa&kyo8KF|/3(P?+k(5*-EYTqeA;INcG|6XRG13$%RbvD95U-"
+wordpress_secure_auth_salt: "Idm!dZ)}A-*Ke}q9M:.UuymC,T6U1Re-nl_zl||k=|6Ieh7096K0_TIHGBB~++;+"
+wordpress_logged_in_salt: "L<zaNA~l-OUv(.|gS-r4/md@Lx/oZc=I/YG,O5r6jP 0GJ+B=Bz%-qs~*/I^soYk"
+wordpress_nonce_salt: "Vm:+6060Y:#(n~|B@)#-tun(+O6LnXb]#%$%`(cpFs_4zqvAC%Dn>9o2O-%i3{6="
+
+#wp-cli
+wp_cli_url: "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
+
+#wordpress admin
+wordpress_admin_user: admin_wp
+wordpress_admin_password: 4dmin_wp$ù
+wordpress_admin_email: wordpress@admin.com
