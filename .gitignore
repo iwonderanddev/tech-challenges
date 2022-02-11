@@ -1,1 +1,8 @@
 .idea/*
+
+#Added for ops-ansible-challenge
+ops/challenge-ansible/ubuntu-web-server/*.log
+ops/challenge-ansible/ubuntu-db-server/*.log
+ops/challenge-ansible/ubuntu-web-server/.vagrant
+ops/challenge-ansible/ubuntu-db-server/.vagrant
+ops/challenge-ansible/ansible/host_vars/.ssh/*
