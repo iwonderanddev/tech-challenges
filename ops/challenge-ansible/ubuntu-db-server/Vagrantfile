@@ -1,0 +1,28 @@
+# encoding: utf-8
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# Box / OS
+VAGRANT_BOX = 'ubuntu/bionic64'
+# Memorable name for your
+VM_NAME = 'ubuntu-db-server'
+# VM User — 'vagrant' by default
+VM_USER = 'kam'
+# Username on your Mac
+MAC_USER = 'kam'
+# # VM Port — uncomment this to use NAT instead of DHCP
+# VM_PORT = 8080
+Vagrant.configure(2) do |config|
+  # Vagrant box from Hashicorp
+  config.vm.box = VAGRANT_BOX
+  
+  # Actual machine name
+  config.vm.hostname = VM_NAME
+  config.vm.network "private_network", ip: "192.168.10.20"
+  # Set VM name in Virtualbox
+  config.vm.provider "virtualbox" do |v|
+    v.name = VM_NAME
+    v.memory = 2048
+  end
+  #We add ansible provisioner to permit ansible access to vm
+  config.vm.provider "ansible"
+end
