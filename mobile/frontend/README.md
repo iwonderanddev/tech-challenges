@@ -37,7 +37,7 @@ DON'T DO:
 
 - Do not lose time on build process, focus on the app itself
 - Do not use Docker, Vagrant... we must be able to run the app only with `yarn android` and `yarn ios`
-- Do not lose time with amazing styling, be basic
+- Do not lose time with amazing styling, animations, navigation... be basic
 
 ## Domain
 
