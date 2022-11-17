@@ -111,7 +111,7 @@ In your newly created project:
 2. Copy the file `apiMock.js`
 3. Import it in the project root file:
    ```js
-   import 'apiMock';
+   import './apiMock';
    ```
 
 You should now be able to make HTTP requests on the endpoints listed above.
