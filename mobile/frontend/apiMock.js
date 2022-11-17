@@ -6,111 +6,112 @@ createServer({
     this.get('/api/surveys', () => {
       return [
         {
-          'name': 'Melun',
-          'code': 'XX3',
-        },
-        {
-          'code': 'XX2',
-          'name': 'Chartres',
-        },
-        {
+          'id': 1,
           'name': 'Paris',
-          'code': 'XX1',
+        },
+        {
+          'id': 2,
+          'name': 'Timișoara',
+        },
+        {
+          'name': 'New York',
+          'id': 3,
         },
       ];
     });
-    this.get('/api/survey/XX1', () => {
+    this.get('/api/survey/1', () => {
       return [
-        {
-          'type': 'qcm',
-          'label': 'What best sellers are available in your store?',
-          'result': {
-            'Product 2': 2,
-            'Product 3': 1,
-            'Product 4': 0,
-            'Product 1': 0,
-            'Product 5': 4,
-            'Product 6': 0,
-          },
-        },
         {
           'label': 'Number of products?',
           'type': 'numeric',
-          'result': 697.2,
+          'answers': [5200, 540, 670, 470, 400, 1400, 400, 1200],
         },
         {
-          'result': [
-            '2017-06-09T00:00:00.000Z',
-            '2016-04-29T11:04:50.000Z',
-            '2017-09-14T09:45:00.000Z',
-            '2016-03-29T11:04:50.000Z',
-            '2016-02-28T11:04:50.000Z',
+          'answers': [
+            '2017-06-09T10:10:00.000Z',
+            '2020-04-29T11:00:00.000Z',
+            '2017-09-14T09:55:00.000Z',
+            '2016-03-29T15:30:00.000Z',
+            '2019-02-28T15:30:00.000Z',
           ],
           'type': 'date',
           'label': 'What is the visit date?',
         },
-      ];
-    });
-    this.get('/api/survey/XX2', () => {
-      return [
         {
-          'result': {
-            'Product 2': 4,
-            'Product 5': 6,
-            'Product 3': 6,
-            'Product 1': 4,
-            'Product 4': 3,
-            'Product 6': 3,
-          },
-          'type': 'qcm',
+          'type': 'mcq',
           'label': 'What best sellers are available in your store?',
-        },
-        {
-          'result': 4733.33333333333,
-          'type': 'numeric',
-          'label': 'Number of products?',
-        },
-        {
-          'label': 'What is the visit date?',
-          'type': 'date',
-          'result': [
-            '2016-08-28T12:04:50.000Z',
-            '2017-10-25T12:04:50.000Z',
-            '2017-08-26T12:04:50.000Z',
-            '2017-09-25T12:04:50.000Z',
-            '2017-08-25T12:04:50.000Z',
-            '2017-07-25T12:04:50.000Z',
+          'options': ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6'],
+          'answers': [
+            [true, false, true, true, true, true],
+            [true, false, true, false, true, false],
+            [false, false, true, true, true, true],
+            [true, false, true, true, false, false],
+            [false, false, true, false, false, false],
+            [true, false, true, false, true, false]
           ],
         },
       ];
     });
-    this.get('/api/survey/XX3', () => {
+    this.get('/api/survey/2', () => {
       return [
         {
-          'result': {
-            'Product 5': 4,
-            'Product 4': 4,
-            'Product 3': 4,
-            'Product 1': 4,
-            'Product 6': 3,
-            'Product 2': 2,
-          },
-          'type': 'qcm',
-          'label': 'What best sellers are available in your store?',
-        },
-        {
+          'type': 'numeric',
           'label': 'Number of products?',
-          'result': 6200,
-          'type': 'numeric'
+          'answers': [1200, 2300, 768, 98, 502],
         },
         {
           'label': 'What is the visit date?',
           'type': 'date',
-          'result': [
-            '2017-09-25T12:04:50.000Z',
-            '2017-08-25T12:04:50.000Z',
-            '2017-10-25T12:04:50.000Z',
-            '2017-06-25T12:04:50.000Z'
+          'answers': [
+            '2016-08-28T08:00:00.000Z',
+            '2019-10-25T12:50:00.000Z',
+            '2017-08-26T16:50:00.000Z',
+            '2020-09-25T17:10:00.000Z',
+            '2017-08-25T09:30:00.000Z',
+            '2021-07-25T19:01:00.000Z',
+          ],
+        },
+        {
+          'type': 'mcq',
+          'label': 'What best sellers are available in your store?',
+          'options': ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6'],
+          'answers': [
+            [false, true, true, false, true, false],
+            [true, true, true, true, true, true],
+            [true, true, true, true, true, false],
+            [true, false, true, true, true, true],
+            [false, false, true, false, true, false],
+          ],
+        },
+      ];
+    });
+    this.get('/api/survey/3', () => {
+      return [
+        {
+          'label': 'Number of products?',
+          'type': 'numeric',
+          'answers': [42, 2201, 447, 19, 756, 143, 280, 97, 127],
+        },
+        {
+          'label': 'What is the visit date?',
+          'type': 'date',
+          'answers': [
+            '2021-09-25T12:00:00.000Z',
+            '2018-08-25T14:25:00.000Z',
+            '2017-10-25T08:25:00.000Z',
+            '2022-06-25T18:55:00.000Z'
+          ],
+        },
+        {
+          'type': 'mcq',
+          'label': 'What best sellers are available in your store?',
+          'options': ['Product 1', 'Product 2', 'Product 3', 'Product 5', 'Product 4', 'Product 6'],
+          'answers': [
+            [false, true, true, false, true, false],
+            [true, true, true, true, true, true],
+            [false, true, true, true, true, true],
+            [true, true, true, true, true, true],
+            [false, false, true, false, true, false],
           ],
         },
       ];
