@@ -87,11 +87,10 @@ rm -rf .git
 Finally, start the app:
 
 ```
-yarn android
-yarn ios
+yarn start
 ```
 
-It should open the app in an emulator.
+You can open the app in an emulator (if you have Xcode / Android Studio installed) or on a real device via the `Expo Go` app (available on both App Store and Play Store).
 
 ### API mock
 
