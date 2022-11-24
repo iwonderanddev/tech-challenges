@@ -22,10 +22,11 @@ possible (~1 day) and getting back to you for the next step.
 
 Profiles:
 
-- Junior _fullstack_ developer, [your challenge](fullstack/junior)
-- Senior _fullstack_ developer, [your challenge](fullstack/senior)
-- Backend developer, [your challenge](backend)
-- Frontend developer, [your challenge](frontend)
+- Web Junior _fullstack_ developer, [your challenge](fullstack/junior)
+- Web Senior _fullstack_ developer, [your challenge](fullstack/senior)
+- Web backend developer, [your challenge](backend)
+- Web frontend developer, [your challenge](frontend)
 - Ops, [your challenge](ops)
-- Senior 3D developer, [challenge 1](3D/senior) or [challenge 2](3D/MeshCombiner)
+- 3D Senior developer, [challenge 1](3D/senior) or [challenge 2](3D/MeshCombiner)
 - C# developer, [your challenge](3D/CacheModuleTest)
+- Mobile frontend developer, [your challenge](mobile/frontend)
