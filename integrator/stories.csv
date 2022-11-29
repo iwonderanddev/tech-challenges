@@ -1,0 +1,10 @@
+description,status,epic,blocked by
+Create Stories,to do,Code,Create Shortcut Token API
+Read Shortcut API documentation,in progress,Spike,Read & Understand tech challenge
+Tech challenge accepted!,done,Spike,
+Define your technical stack,in progress,Setup,Read & Understand tech challenge
+Read stories from CSV file,to do,Code,Define your technical stack
+Create Epics,to do,Code,Create Shortcut Token API
+Create Workflow,done,Setup,Create Shortcut Token API
+Read & Understand tech challenge,done,Spike,Tech challenge accepted!
+Create Shortcut Token API,to do,Setup,Read Shortcut API documentation
