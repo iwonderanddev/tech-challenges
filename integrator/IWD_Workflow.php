@@ -25,22 +25,25 @@ class Story {
      * Task's name/description
      */
     public $description;
+    
     /** 
      * @var
      * Advancement status
      */
     public $status;
+    
     /** 
      * @var
-     * The epic this task belongs to
+     * The name of the epic this task belongs to
      */
     public $epic;
+    
     /** 
      * @var
      * Parent task, which needs to be completed before this one can start.
      */
     public $blockedBy;
-        
+    
     /**
      * @constructor
      * Basic constructor filling all 4 standard Story fields
