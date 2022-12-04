@@ -1,13 +1,15 @@
 <?php
 //Lib source : https://github.com/chroder/youtrack-to-clubhouse/blob/master/src/App/Clubhouse/Api.php
 
-namespace IWD_workflow;
+namespace API;
 
-class ShortcutApi
+class RequestManager
 {
+    /** Shortcut API root URL */
     private $url = 'https://api.app.shortcut.com/api/v3';
-    private $cooldownTime = 60;
+    /** Shortcut API token */
     private $token;
+    private $cooldownTime = 60;
 
     public function __construct($token)
     {

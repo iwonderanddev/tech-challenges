@@ -1,23 +1,11 @@
 <?php
-namespace IWD_workflow;
+namespace Model;
 
-/**
- * Class Epic
- * @package IWD_workflow
- * An Epic contains a set of tasks.
- */
-class Epic {
-    /** 
-     * @var
-     * Epic's name/description
-     */
-    public $description;
-}
 
 /**
  * Class Story
  * @package IWD_workflow
- * A story, with its parent task & epic, when applicable
+ * A story, with its parent story & epic, when applicable
  */
 class Story {
     /** 
@@ -34,13 +22,13 @@ class Story {
     
     /** 
      * @var
-     * The name of the epic this task belongs to
+     * The name of the epic this story belongs to
      */
     public $epic;
     
     /** 
      * @var
-     * Parent task, which needs to be completed before this one can start.
+     * Parent story, which needs to be completed before this one can start.
      */
     public $blockedBy;
     
@@ -70,6 +58,3 @@ class Story {
     }
 
 }
-
-
-//echo $this->var;
