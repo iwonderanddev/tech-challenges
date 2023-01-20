@@ -2,7 +2,7 @@
 
 ## The Test
 
-Based on a CSV file listing & describing stories, **code a script that create all stories in a Kanban in [Shortcut App](https://app.shortcut.com/)**
+Based on a CSV file listing & describing stories, **code a solution that create all stories in a Kanban in [Shortcut App](https://app.shortcut.com/)**
 
 - Use [Shortcut REST API](https://shortcut.com/api/rest/v3)
 - Group by stories status
