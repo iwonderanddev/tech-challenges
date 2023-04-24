@@ -27,7 +27,6 @@ Profiles:
 - Web backend developer, [your challenge](backend)
 - Web frontend developer, [your challenge](frontend)
 - Ops, [your challenge](ops)
-- 3D Senior developer, [challenge 1](3D/senior) or [challenge 2](3D/MeshCombiner)
-- C# developer, [your challenge](3D/CacheModuleTest)
+- 3D Junior developer, [your challenge](3D/junior)
 - Mobile frontend developer, [your challenge](mobile/frontend)
 - Junior Integrator Developer, [your challenge](integrator/junior)
