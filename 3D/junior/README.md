@@ -78,6 +78,8 @@ You can simply hardcode the JSON string, the main goal is to parse it and render
 
 ### Step 1: Rendering a fixture
 
+We want to **render one fixture.**
+
 The result should look like this (you are free to choose the color and visual effects):
 
 <img width="671" alt="junior-3d-fixture-rendering" src="https://user-images.githubusercontent.com/97949722/233956359-3e1f68a5-4130-4e16-b077-a527f56b930d.png">
