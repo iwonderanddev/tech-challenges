@@ -27,6 +27,6 @@ Profiles:
 - Web backend developer, [your challenge](backend)
 - Web frontend developer, [your challenge](frontend)
 - Ops, [your challenge](ops)
-- Developer C# Unity, [your challenge](3D/junior)
+- Developer C# Unity, [your challenge](3D/fixture-challenge)
 - Mobile frontend developer, [your challenge](mobile/frontend)
 - Junior Integrator Developer, [your challenge](integrator/junior)

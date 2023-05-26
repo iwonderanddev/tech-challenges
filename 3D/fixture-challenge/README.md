@@ -1,4 +1,4 @@
-# 3D Editor - Tech challenge - Junior
+# C# Unity Developer - Fixture challenge
 
 ## Setup
 
