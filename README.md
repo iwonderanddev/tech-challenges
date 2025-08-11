@@ -22,6 +22,7 @@ possible (~1 day) and getting back to you for the next step.
 
 Profiles:
 
+- AI / ML engineer, [your challenge](AI)
 - Web Junior _fullstack_ developer, [your challenge](fullstack/junior)
 - Web Senior _fullstack_ developer, [your challenge](fullstack/senior)
 - Web backend developer, [your challenge](backend)

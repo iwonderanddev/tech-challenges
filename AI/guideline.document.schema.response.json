@@ -1,0 +1,643 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "rootChildren": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    { "$ref": "#/definitions/accessory" },
+                    { "$ref": "#/definitions/catalogItem" },
+                    { "$ref": "#/definitions/shelfLike" },
+                    { "$ref": "#/definitions/bay" },
+                    { "$ref": "#/definitions/furniture" },
+                    { "$ref": "#/definitions/makeupTray" }
+                ]
+            }
+        },
+        "bayFurnitureChildren": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    { "$ref": "#/definitions/accessory" },
+                    { "$ref": "#/definitions/catalogItem" },
+                    { "$ref": "#/definitions/shelfLike" },
+                    { "$ref": "#/definitions/makeupTray" }
+                ]
+            }
+        },
+        "shelfLikeChildren": {
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    { "$ref": "#/definitions/accessory" },
+                    { "$ref": "#/definitions/catalogItem" }
+                ]
+            }
+        },
+        "accessoryChildren": {
+            "description": "Even though the schema allows for accessory nesting, the actual implementation will never have more than one level of nesting. This is not a recursive structure.",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    { "$ref": "#/definitions/accessory" },
+                    { "$ref": "#/definitions/catalogItem" }
+                ]
+            }
+        },
+        "makeupTrayChildren": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/makeupTrayParts"
+            }
+        },
+        "catalogItem": {
+            "type": "object",
+            "required": [
+                "type",
+                "id",
+                "name",
+                "name2",
+                "code",
+                "code2",
+                "code3",
+                "comments",
+                "isNew",
+                "isIn",
+                "number",
+                "facing",
+                "files",
+                "markets",
+                "brand",
+                "folders",
+                "children",
+                "isLinkedItem"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "product",
+                        "tester",
+                        "visual",
+                        "object3D",
+                        "compositeObject3D",
+                        "pointOfSaleRepresentation",
+                        "shoes",
+                        "cloth",
+                        "textileAccessory",
+                        "storeComponent",
+                        "makeupGrid"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "name2": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "code2": {
+                    "type": "string"
+                },
+                "code3": {
+                    "type": "string"
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "isNew": {
+                    "type": "boolean"
+                },
+                "quantity": {
+                    "type": "integer"
+                },
+                "facing": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "number": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "internalId": {
+                    "type": "string"
+                },
+                "files": { "$ref": "#/definitions/fileList" },
+                "markets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/itemMarket"
+                    }
+                },
+                "brand": {
+                    "type": "string"
+                },
+                "folders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/itemFolder"
+                    }
+                },
+                "isIn" : {
+                    "type": "boolean"
+                },
+                "capacity1": {"$ref":  "../../common/item.capacity.json"},
+                "capacity2": {"$ref":  "../../common/item.capacity.json"},
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/catalogItem"
+                    }
+                },
+                "isLinkedItem": {
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
+        "accessory": {
+            "type": "object",
+            "required": [
+                "type",
+                "id",
+                "name",
+                "name2",
+                "code",
+                "code2",
+                "code3",
+                "comments",
+                "isNew",
+                "isIn",
+                "number",
+                "files",
+                "markets",
+                "brand",
+                "folders",
+                "children",
+                "isLinkedItem"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "accessory"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "name2": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "code2": {
+                    "type": "string"
+                },
+                "code3": {
+                    "type": "string"
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "isNew": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "internalId": {
+                    "type": "string"
+                },
+                "files": { "$ref": "#/definitions/fileList" },
+                "markets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/itemMarket"
+                    }
+                },
+                "brand": {
+                    "type": "string"
+                },
+                "folders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/itemFolder"
+                    }
+                },
+                "isIn" : {
+                    "type": "boolean"
+                },
+                "children": { "$ref": "#/definitions/accessoryChildren" },
+                "quantity": {
+                    "type": "integer"
+                },
+                "isLinkedItem": {
+                    "type": "boolean"
+                }
+            },
+            "additionalProperties": false
+        },
+        "shelfLike": {
+            "type": "object",
+            "required": [
+                "type",
+                "comments",
+                "children"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "shelf",
+                        "verticalSeparator",
+                        "bayHeader",
+                        "bayFooter",
+                        "bayRightSide",
+                        "bayLeftSide",
+                        "bayBackPanel",
+                        "hook",
+                        "itemHolder"
+                    ]
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "number": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "internalId": {
+                    "type": "string"
+                },
+                "files": { "$ref": "#/definitions/fileList" },
+                "children": { "$ref": "#/definitions/shelfLikeChildren" }
+            },
+            "additionalProperties": false
+        },
+        "makeupTray": {
+            "type": "object",
+            "required": [
+                "type",
+                "comments",
+                "children"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "makeupTray"
+                    ]
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "number": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "internalId": {
+                    "type": "string"
+                },
+                "children": { "$ref": "#/definitions/makeupTrayChildren" }
+            },
+            "additionalProperties": false
+        },
+        "makeupTrayParts": {
+            "type": "object",
+            "required": [
+                "type",
+                "comments",
+                "children"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "makeupTrayBackPanel",
+                        "makeupTrayFrameBottom",
+                        "makeupTrayFrameLeft",
+                        "makeupTrayFrameRight",
+                        "makeupTrayFrameTop"
+                    ]
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "children": { "$ref": "#/definitions/shelfLikeChildren" }
+            },
+            "additionalProperties": false
+        },
+        "bay": {
+            "type": "object",
+            "required": [
+                "type",
+                "name",
+                "code",
+                "comments",
+                "number",
+                "children",
+                "outList"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "bay"
+                    ]
+                },
+                "name": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "code": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "internalId": {
+                    "type": "string"
+                },
+                "files": { "$ref": "#/definitions/fileList" },
+                "children": { "$ref": "#/definitions/bayFurnitureChildren" },
+                "outList": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "furniture": {
+            "type": "object",
+            "required": [
+                "type",
+                "id",
+                "name",
+                "name2",
+                "code",
+                "code2",
+                "code3",
+                "comments",
+                "isNew",
+                "markets",
+                "children"
+            ],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "furniture"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "name2": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "code2": {
+                    "type": "string"
+                },
+                "code3": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "isNew": {
+                    "type": "boolean"
+                },
+                "internalId": {
+                    "type": "string"
+                },
+                "files": { "$ref": "#/definitions/fileList" },
+                "markets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/itemMarket"
+                    }
+                },
+                "children": { "$ref": "#/definitions/bayFurnitureChildren" }
+            },
+            "additionalProperties": false
+        },
+        "fileList": {
+            "type": "array",
+            "items": {
+                "type": [
+                    "object"
+                ],
+                "required": [
+                    "id",
+                    "type",
+                    "fileURL",
+                    "url"
+                ],
+                "properties": {
+                    "id": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "url": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "idv4": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "facing",
+                            "thumbnail",
+                            "display-facing-medium",
+                            "display-source",
+                            "display-source-v4",
+                            "preview",
+                            "texture",
+                            "texture-medium",
+                            "documentView",
+                            "documentViewTextInBox"
+                        ]
+                    },
+                    "fileURL": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "ready",
+                            "generating",
+                            "failed"
+                        ]
+                    }
+                }
+            }
+        },
+        "guidelineMarket": {
+            "type": "object",
+            "required": [
+                "id",
+                "group",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "itemMarket": {
+            "type": "object",
+            "required": [
+                "id",
+                "code",
+                "code2"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": ["string", "null"]
+                },
+                "code2": {
+                    "type": ["string", "null"]
+                }
+            },
+            "additionalProperties": false
+        },
+        "itemFolder": {
+            "type": "string"
+        }
+    },
+
+    "type": "object",
+    "required": [
+        "id",
+        "guidelineId",
+        "guidelineName",
+        "files",
+        "children"
+    ],
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "guidelineId": {
+            "type": "string"
+        },
+        "guidelineName": {
+            "type": "string"
+        },
+        "guidelineDescription": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "guidelineMarkets": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/guidelineMarket"
+            }
+        },
+        "guidelineCampaignName": {
+            "type": "string"
+        },
+        "guidelineStart": {
+            "type": "string",
+            "description": "Optional field, may be inherited from the campaign",
+            "format": "date-time"
+        },
+        "guidelineEnd": {
+            "type": "string",
+            "description": "Optional field, may be inherited from the campaign",
+            "format": "date-time"
+        },
+        "temporaryResourceRetryAfter": {
+            "type": "string",
+            "description": "Optional field, date to wait for re-calling endpoint, to get generated temporary resources",
+            "format": "date-time"
+        },
+        "settings": { "$ref": "settings/guideline.document.settings.schema.response.json" },
+        "files": { "$ref": "#/definitions/fileList" },
+        "children": { "$ref": "#/definitions/rootChildren" }
+    }
+}
